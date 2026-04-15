@@ -9,6 +9,7 @@ async function request(path, options = {}) {
 
   const response = await fetch(`${API_BASE_URL}${path}`, {
     ...options,
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       ...(options.headers || {})
@@ -33,6 +34,30 @@ async function request(path, options = {}) {
 export const api = {
   getHealth() {
     return request("/api/health");
+  },
+
+  register(payload) {
+    return request("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+  },
+
+  login(payload) {
+    return request("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+  },
+
+  logout() {
+    return request("/api/auth/logout", {
+      method: "POST"
+    });
+  },
+
+  getCurrentUser() {
+    return request("/api/auth/me");
   },
 
   getCourses() {
