@@ -33,6 +33,14 @@ export function createApp() {
   app.use(express.urlencoded({ extended: true }));
   app.use(requestLogger);
 
+  app.get("/", (req, res) => {
+    res.status(200).json({
+      status: "ok",
+      message: "Scholastica 3.0 backend is running",
+      healthCheck: "/api/health"
+    });
+  });
+
   app.use("/api", apiRoutes);
   app.use(notFoundHandler);
   app.use(errorHandler);

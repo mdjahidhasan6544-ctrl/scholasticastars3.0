@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
 
+import { env } from "./env.js";
+
 export async function connectDatabase() {
   mongoose.set("strictQuery", true);
 
-  return mongoose.connect(process.env.MONGO_URI, {
+  return mongoose.connect(env.mongoUri, {
     dbName: "scholastica3"
   });
 }
