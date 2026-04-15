@@ -14,6 +14,7 @@ This file is the project-specific implementation guide for `scholastica3.0`. It 
    - The frontend consumes only a deployed API URL via environment variables.
 
 2. **Modular, deterministic server design**
+   - The backend runtime entrypoint and environment template live inside `backend/`.
    - `routes/` wire endpoints only.
    - `controllers/` handle HTTP concerns.
    - `services/` own reusable business logic.
@@ -66,7 +67,8 @@ This file is the project-specific implementation guide for `scholastica3.0`. It 
 ## Deployment Rules
 
 1. Deploy backend to Render Web Service first.
-2. Test `GET /api/health` on the deployed backend.
-3. Configure `VITE_API_URL` with the deployed backend URL.
-4. Deploy frontend to Render Static Site second.
-5. Do not couple the frontend to local backend assumptions.
+2. Backend runtime files (`server.js`, `.env.example`) stay inside `backend/`.
+3. Test `GET /api/health` on the deployed backend.
+4. Configure `VITE_API_URL` with the deployed backend URL.
+5. Deploy frontend to Render Static Site second.
+6. Do not couple the frontend to local backend assumptions.

@@ -19,6 +19,8 @@ The file was authored from the repository’s authoritative skill sources and th
 ```text
 scholastica3.0/
 ├── backend/
+│   ├── .env.example
+│   ├── server.js
 │   ├── config/
 │   ├── controllers/
 │   ├── middleware/
@@ -31,9 +33,8 @@ scholastica3.0/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   └── services/
-├── server.js
 ├── skills.md
-├── .env.example
+├── package.json
 └── README.md
 ```
 
@@ -50,9 +51,9 @@ scholastica3.0/
 
 ## Environment variables
 
-### Root backend env (`.env`)
+### Backend env (`backend/.env`)
 
-Copy `.env.example` to `.env` and set real values:
+Copy `backend/.env.example` to `backend/.env` and set real values:
 
 ```env
 PORT=5000
@@ -111,10 +112,10 @@ This order is mandatory.
 
 ### Phase 1 — Deploy backend first
 
-Create a **Render Web Service** for the `scholastica3.0/` root.
+Create a **Render Web Service** for the `scholastica3.0/` project.
 
 - **Build command:** `npm install`
-- **Start command:** `node server.js`
+- **Start command:** `node backend/server.js`
 
 Set these Render environment variables:
 
@@ -228,6 +229,7 @@ curl -X DELETE https://your-backend-url.onrender.com/api/courses/<course-id>
 ## Notes
 
 - MongoDB Atlas is required.
+- Backend runtime files now live in `backend/`.
 - `MONGO_URI` is never hardcoded in application logic.
 - CORS is enabled and defaults to `*` when `CLIENT_URL=*`.
 - The backend runs independently of the frontend.

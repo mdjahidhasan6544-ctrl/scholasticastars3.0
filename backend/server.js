@@ -1,9 +1,7 @@
-import "dotenv/config";
-
-import { createApp } from "./backend/app.js";
-import { connectDatabase, disconnectDatabase } from "./backend/config/database.js";
-import { env, validateServerEnv } from "./backend/config/env.js";
-import { logger } from "./backend/utils/logger.js";
+import { createApp } from "./app.js";
+import { connectDatabase, disconnectDatabase } from "./config/database.js";
+import { env, validateServerEnv } from "./config/env.js";
+import { logger } from "./utils/logger.js";
 
 validateServerEnv();
 
