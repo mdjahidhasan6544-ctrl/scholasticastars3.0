@@ -23,7 +23,7 @@ function validateEnv() {
 }
 
 function buildCorsOptions() {
-  const origins = `${process.env.CLIENT_URL || "https://scholasticastars3-0.onrender.com"}`
+  const origins = `${process.env.CLIENT_URL || "https://scholasticastars3-0-1.onrender.com"}`
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean);
