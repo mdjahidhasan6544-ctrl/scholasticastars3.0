@@ -14,7 +14,7 @@ services:
       - key: JWT_EXPIRY
         value: 7d
       - key: CLIENT_URL
-        sync: false
+        value: https://scholasticastars3-0-1.onrender.com
       - key: MONGO_URI
         sync: false
       - key: ADMIN_NAME

@@ -14,6 +14,11 @@ import { ensureAdminAccount } from "./utils/ensureAdminAccount.js";
 
 dotenv.config();
 
+const DEFAULT_CLIENT_URLS = [
+  "http://localhost:5173",
+  "https://scholasticastars3-0-1.onrender.com"
+];
+
 function validateEnv() {
   const missing = ["MONGO_URI", "JWT_SECRET"].filter((key) => !process.env[key]);
 
@@ -22,10 +27,14 @@ function validateEnv() {
   }
 }
 
+function normalizeOrigin(value) {
+  return `${value}`.trim().replace(/\/+$/, "");
+}
+
 function buildCorsOptions() {
-  const origins = `${process.env.CLIENT_URL || "https://scholasticastars3-0-1.onrender.com"}`
+  const origins = `${process.env.CLIENT_URL || DEFAULT_CLIENT_URLS.join(",")}`
     .split(",")
-    .map((item) => item.trim())
+    .map(normalizeOrigin)
     .filter(Boolean);
 
   return {
@@ -90,4 +99,3 @@ connectDB()
     console.error("Failed to start server:", error.message);
     process.exit(1);
   });
-
