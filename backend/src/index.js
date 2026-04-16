@@ -16,7 +16,8 @@ dotenv.config();
 
 const DEFAULT_CLIENT_URLS = [
   "http://localhost:5173",
-  "https://scholasticastars3-0-1.onrender.com"
+  "https://scholasticastars3-0-1.onrender.com",
+  "https://scholasticastars3-0.onrender.com"
 ];
 
 function validateEnv() {
