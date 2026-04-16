@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 
 import axiosInstance from "../api/axiosInstance.js";
@@ -78,7 +79,9 @@ export function AuthProvider({ children }) {
 
   async function login(payload) {
     try {
-      const response = await axiosInstance.post("/api/auth/login", payload);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, payload, {
+        withCredentials: true
+      });
       applyUser(response.data.user);
       return response.data.user;
     } catch (error) {
