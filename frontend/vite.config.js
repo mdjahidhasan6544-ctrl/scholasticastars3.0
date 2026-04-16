@@ -7,7 +7,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       "/api": {
-        target: "https://scholasticastars3-0-1.onrender.com",
+        target: "https://scholasticastars3-0.onrender.com/",
         changeOrigin: true
       }
     }
