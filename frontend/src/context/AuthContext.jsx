@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axiosInstance from "../api/axiosInstance.js";
 
 const AuthContext = createContext(null);
+const apiBaseUrl = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
 
 function getErrorMessage(error, fallback) {
   return error.response?.data?.message || fallback;
@@ -79,7 +80,7 @@ export function AuthProvider({ children }) {
 
   async function login(payload) {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, payload, {
+      const response = await axios.post(`${apiBaseUrl}/api/auth/login`, payload, {
         withCredentials: true
       });
       applyUser(response.data.user);
